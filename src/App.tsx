@@ -252,6 +252,10 @@ function App() {
   };
 
   const renderContent = () => {
+    if (showSettings) {
+      return <UserSettings onClose={() => setShowSettings(false)} />;
+    }
+
     if (activeSection === 'generator') {
       return (
         <div className="space-y-6">
@@ -324,6 +328,7 @@ function App() {
         onLogin={() => setIsAuthenticated(true)}
         onSignup={() => setIsAuthenticated(true)}
         onLogout={() => setIsAuthenticated(false)}
+        onSettings={() => setShowSettings(true)}
       />
 
       {isAuthenticated ? (
